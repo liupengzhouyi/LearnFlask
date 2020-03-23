@@ -16,5 +16,9 @@ def index():
 def paly(name):
     return "hello %s" % name
 
+@app.route('/userid/<int:userId>')
+def paly01(userId):
+    return "userId: %d" % userId
+
 if __name__ == '__main__':
     app.run()
