@@ -1,7 +1,7 @@
 # import package
 import urllib
 
-from flask import Flask, escape, url_for, request
+from flask import Flask, escape, url_for, request, render_template
 
 app = Flask(__name__)
 
@@ -43,6 +43,12 @@ def paly04():
         return index()
     else:
         return hello_world()
+
+@app.route('/palyHello/')
+@app.route('/palyHello/<string:name>')
+def palyHello(name):
+    return render_template('hello.html', name=name)
+
 
 if __name__ == '__main__':
     app.run()
