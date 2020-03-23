@@ -1,7 +1,7 @@
 # import package
 import urllib
 
-from flask import Flask
+from flask import Flask, escape, url_for
 
 app = Flask(__name__)
 
@@ -14,7 +14,7 @@ def hello_world():
 def index():
     return "Index Page"
 
-@app.route('/user/<str:name>')
+@app.route('/user/<string:name>')
 def paly(name):
     return "hello %s" % name
 
@@ -28,7 +28,14 @@ def paly01(userId):
 
 @app.route('/path/<path:subpath>')
 def paly02(subpath):
-    return "subpath: %s" % str(subpath)
+    return "subpath: %s" % escape(subpath)
+
+@app.route('/about/')
+def about():
+    return "About"
+
+with app.test_request_context():
+    print(url_for('index'))
 
 if __name__ == '__main__':
     app.run()
