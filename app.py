@@ -1,4 +1,6 @@
 # import package
+import urllib
+
 from flask import Flask
 
 app = Flask(__name__)
@@ -12,13 +14,21 @@ def hello_world():
 def index():
     return "Index Page"
 
-@app.route('/user/<name>')
+@app.route('/user/<str:name>')
 def paly(name):
     return "hello %s" % name
+
+@app.route('/userid/<float:number>')
+def paly00(number):
+    return "number: %d" % number
 
 @app.route('/userid/<int:userId>')
 def paly01(userId):
     return "userId: %d" % userId
+
+@app.route('/path/<path:subpath>')
+def paly02(subpath):
+    return "subpath: %s" % str(subpath)
 
 if __name__ == '__main__':
     app.run()
