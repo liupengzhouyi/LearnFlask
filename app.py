@@ -1,7 +1,7 @@
 # import package
 import urllib
 
-from flask import Flask, escape, url_for
+from flask import Flask, escape, url_for, request
 
 app = Flask(__name__)
 
@@ -36,6 +36,13 @@ def about():
 
 with app.test_request_context():
     print(url_for('index'))
+
+@app.route('/paly04', methods=['GET', 'POST'])
+def paly04():
+    if request.method == 'POST':
+        return index()
+    else:
+        return hello_world()
 
 if __name__ == '__main__':
     app.run()
