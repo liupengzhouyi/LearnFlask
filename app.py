@@ -2,12 +2,14 @@
 from flask import Flask, escape, url_for, request, render_template
 
 from application.good import good_blueprint
+from login.login import login_blueprint
 
 # application object
 app = Flask(__name__)
 
 # application object register buleprint object
 app.register_blueprint(good_blueprint)
+app.register_blueprint(login_blueprint)
 
 # tell Flask 触发 function url
 @app.route('/')
