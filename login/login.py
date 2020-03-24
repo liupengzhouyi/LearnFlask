@@ -3,6 +3,8 @@ from flask import Blueprint, render_template
 
 from models.models import User, add_object, query_object
 
+from .register import register_blueprint
+
 login_blueprint = Blueprint(
     'login',
     __name__,
