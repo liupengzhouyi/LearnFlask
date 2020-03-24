@@ -1,10 +1,15 @@
 # import package
 from flask import Flask, escape, url_for, request, render_template
+from db import db
 
 from application.good import good_blueprint
 from login.login import login_blueprint
 from login.verify import verify_blueprint
+
 # application object
+from models.models import User, add_object
+from models.paly import Play, add_object1
+
 app = Flask(__name__)
 
 # application object register buleprint object
@@ -13,6 +18,18 @@ app.register_blueprint(login_blueprint)
 app.register_blueprint(verify_blueprint)
 
 
+# 加载配置信息，其中有数据库的配置信息，包含在SQLALCHEMY_DATABASE_URI中
+app.config.from_object('config')
+
+# 初始化db,并创建models中定义的表格
+
+# 添加这一句，否则会报数据库找不到application和context错误
+with app.app_context():
+    # 初始化db
+    db.init_app(app)
+    # 创建所有未创建的table
+    db.create_all()
+
 # tell Flask 触发 function url
 @app.route('/')
 def hello_world():
@@ -20,6 +37,10 @@ def hello_world():
 
 @app.route('/index')
 def index():
+    play = Play()
+    play.playname = 'liupeng01'
+    play.password = '1234567'
+    add_object1(play)
     return "Index Page"
 
 @app.route('/user/<string:name>')
