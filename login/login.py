@@ -13,15 +13,11 @@ login_blueprint = Blueprint(
 )
 
 @login_blueprint.route('/')
-def getGoods():
+def login():
     return render_template('login.html')
 
 @login_blueprint.route('/add')
 def add():
-    user = User()
-    user.username = 'liupeng012'
-    user.password = '1234567'
-    add_object(user)
     return render_template('loginSuccess.html')
 
 @login_blueprint.route('/add1')
