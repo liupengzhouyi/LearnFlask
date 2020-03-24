@@ -22,7 +22,6 @@ app.register_blueprint(verify_blueprint)
 app.config.from_object('config')
 
 # 初始化db,并创建models中定义的表格
-
 # 添加这一句，否则会报数据库找不到application和context错误
 with app.app_context():
     # 初始化db
