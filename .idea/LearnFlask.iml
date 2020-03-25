@@ -17,6 +17,7 @@
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/application/application_templates" />
         <option value="$MODULE_DIR$/login/loginTemplates" />
+        <option value="$MODULE_DIR$/todo/todoTemplate" />
       </list>
     </option>
   </component>

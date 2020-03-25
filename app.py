@@ -6,6 +6,7 @@ from application.good import good_blueprint
 from login.login import login_blueprint
 from login.verify import verify_blueprint
 from login.register import register_blueprint
+from todo.todo import todo_blueprint
 
 # application object
 from models.models import User, add_object
@@ -18,7 +19,7 @@ app.register_blueprint(good_blueprint)
 app.register_blueprint(login_blueprint)
 app.register_blueprint(verify_blueprint)
 app.register_blueprint(register_blueprint)
-
+app.register_blueprint(todo_blueprint)
 
 # 加载配置信息，其中有数据库的配置信息，包含在SQLALCHEMY_DATABASE_URI中
 app.config.from_object('config')
