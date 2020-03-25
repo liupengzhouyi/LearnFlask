@@ -23,7 +23,7 @@ class Todo(db.Model):
 
     # 返回一个可以用来表示对象的可打印字符串：（相当于java的toString）
     def __repr__(self):
-        return '<做什么：%r 年：%r 月：%r 日： %r 是否做完： %r>' % (self.do, self.year, self.month, self.day, self.done)
+        return '{id: %r do：%r year：%r month：%r day： %r done： %r}' % (self.id, self.do, self.year, self.month, self.day, self.done)
 
 # 操作数据库
 

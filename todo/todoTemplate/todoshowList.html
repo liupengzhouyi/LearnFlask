@@ -28,47 +28,89 @@
                 </ul>
             </div>
             <ul class="list-group">
-
-                <li class="list-group-item">
-                    <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
-                        <div>
-                            <ul class="pager">
-                              <li class="previous">
-                                <div class="col-xs-10">
-                                    <h3 style="color: #ee179f">
-                                        Test
-                                    </h3>
+                {% for i in range(longth) %}
+                    {% if todolist[i].done == '0' %}
+                        <li class="list-group-item">
+                            <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-{{ i }}">
+                                <div>
+                                    <ul class="pager">
+                                      <li class="previous">
+                                        <div class="col-xs-10">
+                                            <h3 style="color: #ee179f">
+                                                {{ todolist[i].do }}
+                                            </h3>
+                                        </div>
+                                      </li>
+                                      <li class="next">
+                                        <button type="button" class="btn btn-primary btn-lg">完成</button>
+                                      </li>
+                                    </ul>
                                 </div>
-                              </li>
-                              <li class="next">
-                                <button type="button" class="btn btn-primary btn-lg">完成</button>
-                              </li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-2">
-                            <i class="fa fa-chevron-down pull-right"></i>
-                        </div>
-                    </div>
-                    <div id="detail-1">
-                        <hr></hr>
-                        <div class="container">
-                            <div class="fluid-row">
-                                <dt>
-                                    <h3>
-                                        Test
-                                    </h3>
-                                </dt>
-                                <dd>
-                                    <p>
-                                        2020-03-25
-                                    </p>
-                                </dd>
+                                <div class="col-xs-2">
+                                    <i class="fa fa-chevron-down pull-right"></i>
+                                </div>
                             </div>
-                        </div>
+                            <div id="detail-{{ i }}">
+                                <hr></hr>
+                                <div class="container">
+                                    <div class="fluid-row">
+                                        <dt>
+                                            <h3>
+                                                {{ todolist[i].do }}
+                                            </h3>
+                                        </dt>
+                                        <dd>
+                                            <p>
+                                                {{ todolist[i].year }}-{{ todolist[i].month }}-{{ todolist[i].day }}
+                                            </p>
+                                        </dd>
+                                    </div>
+                                </div>
 
-                    </div>
-                </li>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">
+                            <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-{{ i }}">
+                                <div>
+                                    <ul class="pager">
+                                      <li class="previous">
+                                        <div class="col-xs-10">
+                                            <h3 style="color: #36ff06">
+                                                {{ todolist[i].do }}
+                                            </h3>
+                                        </div>
+                                      </li>
+                                      <li class="next">
+                                        <button type="button" class="btn btn-primary btn-lg">完成</button>
+                                      </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-2">
+                                    <i class="fa fa-chevron-down pull-right"></i>
+                                </div>
+                            </div>
+                            <div id="detail-{{ i }}">
+                                <hr></hr>
+                                <div class="container">
+                                    <div class="fluid-row">
+                                        <dt>
+                                            <h3>
+                                                {{ todolist[i].do }}
+                                            </h3>
+                                        </dt>
+                                        <dd>
+                                            <p>
+                                                {{ todolist[i].year }}-{{ todolist[i].month }}-{{ todolist[i].day }}
+                                            </p>
+                                        </dd>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>

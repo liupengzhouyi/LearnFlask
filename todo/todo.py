@@ -35,9 +35,8 @@ def getDate():
     add_object(todo)
     return render_template('todoIndex.html')
 
-@todo_blueprint.route('/getAll')
+@todo_blueprint.route('/getAll', methods=['POST', 'GET'])
 def getAll():
     todolist = selectAll()
-    for todo in todolist:
-        print(todo.day)
-    return 'GetAll'
+    longth = len(todolist)
+    return render_template('todoshowList.html', todolist=todolist, longth=longth)
