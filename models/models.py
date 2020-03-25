@@ -41,3 +41,4 @@ def delete_object(user):
 def update_object(user):
     result = user.query.filter(user.username == '111111').all()
     result.title = 'success2018'
+

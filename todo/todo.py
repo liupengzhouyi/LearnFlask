@@ -1,7 +1,7 @@
 # login.py
 from flask import Blueprint, render_template, request
 
-from models.todo import Todo, add_object
+from models.todo import Todo, add_object, selectAll
 
 todo_blueprint = Blueprint(
     'todo',
@@ -25,7 +25,6 @@ def getDate():
     year = request.form.get('year')
     month = request.form.get('month')
     day = request.form.get('day')
-
     todo = Todo()
     todo.done = '0'
     todo.do = todoname
@@ -35,3 +34,10 @@ def getDate():
     print("添加 % r 完成" % todo.__repr__)
     add_object(todo)
     return render_template('todoIndex.html')
+
+@todo_blueprint.route('/getAll')
+def getAll():
+    todolist = selectAll()
+    for todo in todolist:
+        print(todo.day)
+    return 'GetAll'

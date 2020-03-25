@@ -49,3 +49,8 @@ def delete_object(todo):
 def update_object(todo):
     result = todo.query.filter(todo.username == '111111').all()
     result.title = 'success2018'
+
+# 查询所有
+def selectAll():
+    todolist = Todo.query.all()
+    return todolist

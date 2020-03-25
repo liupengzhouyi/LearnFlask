@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo List</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js" integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <ul class="pager">
+                  <li>
+                      <h3 class="panel-title">清单</h3>
+                  </li>
+                </ul>
+            </div>
+            <ul class="list-group">
+
+                <li class="list-group-item">
+                    <div class="row toggle" id="dropdown-detail-1" data-toggle="detail-1">
+                        <div>
+                            <ul class="pager">
+                              <li class="previous">
+                                <div class="col-xs-10">
+                                    <h3 style="color: #ee179f">
+                                        Test
+                                    </h3>
+                                </div>
+                              </li>
+                              <li class="next">
+                                <button type="button" class="btn btn-primary btn-lg">完成</button>
+                              </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-2">
+                            <i class="fa fa-chevron-down pull-right"></i>
+                        </div>
+                    </div>
+                    <div id="detail-1">
+                        <hr></hr>
+                        <div class="container">
+                            <div class="fluid-row">
+                                <dt>
+                                    <h3>
+                                        Test
+                                    </h3>
+                                </dt>
+                                <dd>
+                                    <p>
+                                        2020-03-25
+                                    </p>
+                                </dd>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+    $('[id^=detail-]').hide();
+    $('.toggle').click(function() {
+        $input = $( this );
+        $target = $('#'+$input.attr('data-toggle'));
+        $target.slideToggle();
+        if($input.find('.col-xs-2 i').attr('class')=="fa fa-chevron-down pull-right")
+        {
+             $input.find('.col-xs-2 i').removeClass('fa-chevron-down');
+             $input.find('.col-xs-2 i').addClass('fa-chevron-up');
+        }
+        else if($input.find('.col-xs-2 i').attr('class')=="fa pull-right fa-chevron-up")
+        {
+             $input.find('.col-xs-2 i').removeClass('fa-chevron-up');
+             $input.find('.col-xs-2 i').addClass('fa-chevron-down');
+        }
+         else if($input.find('.col-xs-2 i').attr('class')=="fa pull-right fa-chevron-down")
+        {
+             $input.find('.col-xs-2 i').removeClass('fa-chevron-down');
+             $input.find('.col-xs-2 i').addClass('fa-chevron-up');
+        }
+
+    });
+});
+</script>
+</body>
+</html>
